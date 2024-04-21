@@ -16,7 +16,7 @@ export const useUser = create<UserState>()(
       user: null,
       setUser: (user) => set({ user }),
       clearUser: () => set({ user: null }),
-      updateUser: (propertie) => set((state) => ({ user: { ...state.user, ...propertie, images: propertie.images || state.user?.images || [] } })),
+      updateUser: (propertie) => set((state) => ({ user: { ...state.user, ...propertie } })),
     }),
     {
       name: 'user-storage', // name of the item in the storage (must be unique)
