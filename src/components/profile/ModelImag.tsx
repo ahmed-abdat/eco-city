@@ -54,6 +54,7 @@ export default function ModelImag({
           const downloadURL = await getDownloadURL(imageRef);
           const updateURL = {
             photoURL: downloadURL,
+            
           };
           await updateProfile(user , updateURL)
           await updateDoc(docRef, updateURL);

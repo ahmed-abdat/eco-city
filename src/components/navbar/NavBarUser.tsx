@@ -37,11 +37,6 @@ export default function NavBarUser() {
           Create account
         </Link>
       )}
-      {/* {user ? null : (
-        <div className="flex lg:ml-6">
-          <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-        </div>
-      )} */}
     </>
   );
 }

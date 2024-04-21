@@ -1,3 +1,5 @@
+'use client'
+
 import Link from "next/link";
 import MaxWidthWrapper from "@/components/MaxWithWrapper";
 import { Icons } from "@/components/Icons";
@@ -11,10 +13,16 @@ import UserAvatar from "./UserAvatar";
 import NavAvatar from "./NavAvatar";
 
 import Image from "next/image";
+import { BsCoin } from "react-icons/bs";
+import { auth } from "@/config/firebase";
+import { useUser } from "@/hooks/use-user";
 
-const Navbar = async () => {
-  const nextCookies = cookies();
-  // const { user } = await getServerSideUser(nextCookies)
+const Navbar =  () => {
+
+  const user = useUser((state) => state.user);
+  console.log(user?.points);
+
+  
 
   return (
     <div className="bg-white sticky z-50 top-0 inset-x-0 h-16">
@@ -41,6 +49,7 @@ const Navbar = async () => {
                 </div>
                 {/* <h1>hi there</h1> */}
                 <NavAvatar />
+
                 {/* <div className="ml-4 flow-root lg:ml-6">
                   <Cart />
                 </div> */}

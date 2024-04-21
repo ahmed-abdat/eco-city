@@ -1,3 +1,9 @@
+
+export type Image = {
+  url : string,
+  note? : string,
+  report : string,
+}
 export type User = {
     displayName?: string,
     email: string,
@@ -5,8 +11,9 @@ export type User = {
     emailVerified: boolean,
     uid: string,
     providerId?: string,
+    points?: number,
+    images : Image[],
   };
-
   export type UpdatUser = {
     displayName?: string,
     email?: string,
@@ -14,6 +21,8 @@ export type User = {
     emailVerified?: boolean,
     uid?: string,
     providerId?: string,
+    points?: number,
+    images : Image[],
   }
 
   export type UserData = {

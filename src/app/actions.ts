@@ -29,7 +29,7 @@ export const updateUser = async (uid: string, data: any) => {
   }
 };
 
-import { User } from "@/types/user";
+import { UpdatUser, User } from "@/types/user";
 
 
 
@@ -54,4 +54,22 @@ export const addUserToDatabase = async (user : User) => {
     }
   }
 
+
+  export const getUser = async (uid : string) : Promise<UpdatUser | null > => {
+    const firestore = getFirestore(app);
+    try {
+      const docRef = doc(firestore, "users", uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        return {...docSnap.data() , uid : docSnap.id , images : docSnap.data().images , points : docSnap.data().points}
+      } else {
+        console.log("No such document!");
+        return null
+      }
+    } catch (error) {
+      console.log("Error getting document:", error);
+      return null
+    }
+  }
   

@@ -14,10 +14,8 @@ export default function page({ params } : { params: { featureId: string }}) {
 
   const user = auth.currentUser || null
 
-
-if (!user) {
-  redirect('/login')
-}
+  console.log(user);
+  
 
 
   

@@ -22,8 +22,6 @@ import { toast } from "sonner";
 import { app, auth , db } from "@/config/firebase";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { arrayUnion, collection, doc, setDoc, updateDoc } from "firebase/firestore";
-import { User } from "@/types/user";
-import { getFirestore } from "firebase/firestore/lite";
 export default function UploadImage({ report }: { report: string } ) {
   const [file, setFile] = React.useState<File | null>(null);
   const [loading , setLoading] = useState(false)
@@ -75,7 +73,6 @@ export default function UploadImage({ report }: { report: string } ) {
   const addImageToDB = async(report : string , uid : string , imgUrl : string) => {
     
     try {
-      const firestore = getFirestore()
       const docRef = doc(db , 'users' , uid)
       await updateDoc(docRef, {
         images : arrayUnion({
@@ -91,7 +88,7 @@ export default function UploadImage({ report }: { report: string } ) {
     }
   }
   return (
-    <Card className="w-[350px] font-aljazira">
+    <Card className="w-[350px] sm:w-[400px] font-aljazira">
       <CardHeader>
         <CardTitle className="text-center"> upload your image </CardTitle>
       </CardHeader>

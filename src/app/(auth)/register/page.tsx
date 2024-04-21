@@ -22,6 +22,7 @@ import { Social } from "@/components/auth/Social";
 import { addUserToDatabase } from "@/app/actions";
 import { User } from "@/types/user";
 import { useEffect } from "react";
+import Image from "next/image";
 
 const Page = () => {
   const router = useRouter();
@@ -44,6 +45,9 @@ const Page = () => {
             addUserToDatabase({
               ...user.user,
               displayName: Username,
+        images: [], // Add this line
+        points: 0, // Add this line
+              
             } as User);
             updateProfile( user.user, {
               displayName: Username,
@@ -102,7 +106,10 @@ const Page = () => {
       <div className="container relative flex pt-8 mb-8 flex-col items-center justify-center lg:px-0">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col items-center space-y-2 text-center">
-            <Icons.logo className="h-20 w-20"  aria-label="Logo"/>
+          <Link href="/" aria-label="Logo" >
+                  <Image src={'https://firebasestorage.googleapis.com/v0/b/marketplace-37e56.appspot.com/o/Black%20White%20and%20Green%20Modern%20Technology%20Animated%20Logo%20(2).png?alt=media&token=ffbef2a1-1ae6-487d-ae41-8366861dfc3a'}  alt="logo" width={100} height={100}/>
+                  {/* <Icons.logo className="h-10 w-10" /> */}
+                </Link>
             <h1 className="text-2xl font-semibold tracking-tight">
               Create an account
             </h1>

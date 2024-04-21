@@ -32,6 +32,7 @@ import {
   where,
   getDocs,
 } from "firebase/firestore";
+import Image from "next/image";
 
 const Page = () => {
   const router = useRouter();
@@ -112,7 +113,11 @@ const Page = () => {
             emailVerified: user.emailVerified,
             photoURL: user.photoURL || "",
             providerId: user.providerData[0].providerId,
+      images: [], // Add this line
           };
+
+          console.log(user);
+          
 
           setUser(userInfo);
           toast.success("Signed in successfully");
@@ -158,7 +163,12 @@ const Page = () => {
       <div className="container relative flex pt-20 lg:mb-8 flex-col items-center justify-center lg:px-0">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col items-center space-y-2 text-center">
-            <Icons.logo className="h-20 w-20" />
+          <div className="ml-4 flex lg:ml-0">
+                <Link href="/" aria-label="Logo" >
+                  <Image src={'https://firebasestorage.googleapis.com/v0/b/marketplace-37e56.appspot.com/o/Black%20White%20and%20Green%20Modern%20Technology%20Animated%20Logo%20(2).png?alt=media&token=ffbef2a1-1ae6-487d-ae41-8366861dfc3a'}  alt="logo" width={100} height={100}/>
+                  {/* <Icons.logo className="h-10 w-10" /> */}
+                </Link>
+              </div>
             <h1 className="text-2xl font-semibold tracking-tight">
               Sign in to your account
             </h1>

@@ -9,11 +9,14 @@ import Image from "next/image";
 import { DrawerDialogDemo } from "@/components/profile/CustomDrawer";
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
 import ModelImag from "@/components/profile/ModelImag";
+import { getUser } from "../actions";
+import { UpdatUser, User } from "@/types/user";
 
 export default function Profile() {
   const user = useUser((state) => state.user);
   const [file, setFile] = useState<File | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [usere  , setUser] = useState<UpdatUser | null >(user)
   const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e?.target?.files?.[0];
     if (!file) return;
@@ -25,6 +28,21 @@ export default function Profile() {
       setIsOpen(true);
     }
   }, [file]);
+
+  useEffect(() => {
+    const fetchUser = async (uid : string) => {
+      const user = await getUser(uid)
+      console.log(user)
+      setUser(user)
+    }
+    if(user?.uid){
+      fetchUser(user.uid)
+    }
+
+  }, [user])
+
+  console.log(user);
+  
 
   
 
