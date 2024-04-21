@@ -29,6 +29,7 @@ const handelGoogleLogin = () => {
           emailVerified: user.user.emailVerified,
           photoURL: user.user.photoURL || "",
           providerId: user.user.providerData[0].providerId,
+          images: [],
         };
         addUserToDatabase(userInfo);
         setUser(userInfo);
@@ -53,6 +54,7 @@ const handelGithubLogin = () => {
           emailVerified: user.user.emailVerified,
           photoURL: user.user.photoURL || "",
           providerId: user.user.providerData[0].providerId,
+          images : [],
         };
         setUser(userInfo);
         addUserToDatabase(userInfo);

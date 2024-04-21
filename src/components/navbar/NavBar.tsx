@@ -19,8 +19,6 @@ import { useUser } from "@/hooks/use-user";
 
 const Navbar =  () => {
 
-  const user = useUser((state) => state.user);
-  console.log(user?.points);
 
   
 

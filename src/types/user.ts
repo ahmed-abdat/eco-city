@@ -11,7 +11,6 @@ export type User = {
     emailVerified: boolean,
     uid: string,
     providerId?: string,
-    points?: number,
     images : Image[],
   };
   export type UpdatUser = {
@@ -21,7 +20,6 @@ export type User = {
     emailVerified?: boolean,
     uid?: string,
     providerId?: string,
-    points?: number,
     images : Image[],
   }
 

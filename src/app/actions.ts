@@ -62,7 +62,7 @@ export const addUserToDatabase = async (user : User) => {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         console.log("Document data:", docSnap.data());
-        return {...docSnap.data() , uid : docSnap.id , images : docSnap.data().images , points : docSnap.data().points}
+        return {...docSnap.data() , uid : docSnap.id , images : docSnap.data().images}
       } else {
         console.log("No such document!");
         return null
